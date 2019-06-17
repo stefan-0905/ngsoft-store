@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        if(request()->get('selectedOrder'))
-        dd(request());
         $products = \App\Product::with('category')
+            ->searchByTerm(request()->searchTerm)
+            ->filterByRating(request()->filterRating)
             ->paginate(5);
         return view('index', ['products' => $products]);
     }

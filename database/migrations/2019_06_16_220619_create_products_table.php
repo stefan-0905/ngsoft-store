@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->decimal('price');
-            $table->integer('rating')->default(0);
+            $table->integer('rating')->default(1);
             $table->text('description');
             $table->string('image')->default('https://via.placeholder.com/150');
             $table->timestamps();

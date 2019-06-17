@@ -6,6 +6,8 @@
 
     <div class="row">
         <form class="col-md-6 offset-md-3" action="{{ route('products.store') }}" method="post">
+            <h2>Create desired product</h2>
+            <hr>
             @csrf
 
             <div class="form-group">
@@ -13,12 +15,15 @@
                 <input id="name"
                        type="text"
                        name="name"
-                       class="form-control {{$errors->first('name') ? "border-danger" : ""}}"
+                       class="form-control @error('name') border-danger @enderror"
                        value="{{old('name')}}"
                 >
-                @if($errors->first('name'))
-                <span class="text-danger">{{$errors->first('name')}}</span>
-                @endif
+                @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+{{--                @if($errors->first('name'))--}}
+{{--                <span class="text-danger">{{$errors->first('name')}}</span>--}}
+{{--                @endif--}}
             </div>
 
             <div class="form-group">
@@ -37,12 +42,15 @@
                         <input id="price"
                                type="text"
                                name="price"
-                               class="form-control {{$errors->first('price') ? "border-danger" : ""}}"
+                               class="form-control @error('price') border-danger @enderror"
                                value="{{old('price')}}"
                         >
-                        @if($errors->first('price'))
-                            <span class="text-danger">{{$errors->first('price')}}</span>
-                        @endif
+                        @error('price')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+{{--                        @if($errors->first('price'))--}}
+{{--                            <span class="text-danger">{{$errors->first('price')}}</span>--}}
+{{--                        @endif--}}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -51,12 +59,12 @@
                         <input id="rating"
                                type="text"
                                name="rating"
-                               class="form-control {{$errors->first('rating') ? "border-danger" : ""}}"
+                               class="form-control @error('rating') border-danger @enderror"
                                value="{{old('rating')}}"
                         >
-                        @if($errors->first('rating'))
-                            <span class="text-danger">{{$errors->first('rating')}}</span>
-                        @endif
+                        @error('rating')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -66,11 +74,11 @@
                 <textarea id="description"
                           name="description"
                           rows="5"
-                          class="form-control {{$errors->first('description') ? "border-danger" : ""}}"
+                          class="form-control @error('description') border-danger @enderror"
                 >{{old('description')}}</textarea>
-                @if($errors->first('description'))
-                    <span class="text-danger">{{$errors->first('description')}}</span>
-                @endif
+                @error('description')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 
             <input class="btn btn-sm btn-primary form-control" type="submit" value="Create">
