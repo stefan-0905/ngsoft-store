@@ -12,7 +12,7 @@ $factory->define(\App\Product::class, function (Faker $faker) {
         'name' => $faker->productName,
         'category_id' => $faker->numberBetween(1, 3),
         'price' => $faker->numberBetween(5.00, 100.00),
-        'rating' => $faker->numberBetween(1, 5),
+        'rating' => $faker->numberBetween(0, 5),
         'description' => $faker->text(200),
         'image' => 'https://via.placeholder.com/150',
         'created_at' => $date,

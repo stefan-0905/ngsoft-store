@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price');
             $table->integer('rating')->default(0);
             $table->text('description');
-            $table->string('image');
+            $table->string('image')->default('https://via.placeholder.com/150');
             $table->timestamps();
         });
     }

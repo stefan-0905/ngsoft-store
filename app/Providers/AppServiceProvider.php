@@ -23,6 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Blade::directive('shorten', function ($expression) {
+            return "<?php 
+                if(strlen($expression) > 20)
+                    echo substr($expression,0,100).'...';
+                else echo $expression; ?>";
+        });
+
     }
 }
