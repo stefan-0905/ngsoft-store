@@ -21,9 +21,6 @@
                 @error('name')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
-{{--                @if($errors->first('name'))--}}
-{{--                <span class="text-danger">{{$errors->first('name')}}</span>--}}
-{{--                @endif--}}
             </div>
 
             <div class="form-group">
@@ -48,9 +45,6 @@
                         @error('price')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
-{{--                        @if($errors->first('price'))--}}
-{{--                            <span class="text-danger">{{$errors->first('price')}}</span>--}}
-{{--                        @endif--}}
                     </div>
                 </div>
                 <div class="col-md-6">

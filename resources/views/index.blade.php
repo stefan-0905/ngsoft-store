@@ -33,9 +33,32 @@
             </div>
         </form>
 
-        <a href="{{route('products.create')}}" class="btn btn-primary text-light d-inline-block float-right">Create Product</a>
+        <span class="sortablelink">@sortablelink('name')</span>
+        <span class="sortablelink">@sortablelink('price')</span>
+        <span class="sortablelink">@sortablelink('rating')</span>
+        <span class="sortablelink">@sortablelink('description')</span>
+        <span class="sortablelink">
+            @if(request('sort') == 'category' and request('direction') == 'asc')
+                <a href="{{route('products', ['filterRating' => request('filterRating'),'sort' => 'category', 'direction'=> 'desc'])}}"
+                    onclick="">Category</a>
+                <i class="fa fa-sort-alpha-up"></i>
+            @elseif(request('sort') == 'category')
+                <a href="{{route('products', ['filterRating' => request('filterRating'),'sort' => 'category', 'direction'=> 'asc'])}}"
+                   onclick="">Category</a>
+                <i class="fa fa-sort-alpha-down"></i>
+            @else
+                <a href="{{route('products', ['filterRating' => request('filterRating'),'sort' => 'category', 'direction'=> 'asc'])}}"
+                   onclick="">Category</a>
+                <i class="fa fa-sort"></i>
+            @endif
+        </span>
+
+        <div class="d-inline-block float-right">
+            <a href="{{route('products.create')}}" class="btn btn-primary d-block text-light">Create Product</a>
+        </div>
 
     </div>
+
 
     <div class="row">
 
@@ -64,13 +87,15 @@
 
     </div>
     <nav class="mt-2">
-        {{$products->appends(request()->only(['searchTerm', 'filterRating']))->links()}}
+        {{$products->appends(request()->only(['searchTerm', 'filterRating', 'sort', 'direction']))->links()}}
     </nav>
 
     <script>
         function sendRequest() {
             document.getElementById('searchForm').submit();
         }
+
+
     </script>
 
 @endsection
