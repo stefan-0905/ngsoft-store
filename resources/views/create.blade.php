@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 <label class="font-weight-bold" for="category">Category:</label>
-                <select id="category" class="form-control" name="category_id">
+                <select @if($categories->count() == 0) disabled @endif id="category" class="form-control" name="category_id">
                     @foreach($categories as $category)
                         <option value="{{$category->id}}" {{old('category_id') ? "selected" : ""}}>{{$category->name}}</option>
                     @endforeach
