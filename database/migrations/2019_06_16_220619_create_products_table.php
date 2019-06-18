@@ -17,11 +17,10 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');//->unique();
             $table->integer('category_id')->unsigned();
-            //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->decimal('price');
             $table->integer('rating')->default(1);
             $table->text('description');
-            $table->string('image')->default('https://via.placeholder.com/150');
+            $table->string('image')->default('images/default150x150.png');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <form class="col-md-6 offset-md-3" action="{{ route('products.store') }}" method="post">
+        <form class="col-md-6 offset-md-3" action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
             <h2>Create desired product</h2>
             <hr>
             @csrf
@@ -30,6 +30,12 @@
                         <option value="{{$category->id}}" {{old('category_id') ? "selected" : ""}}>{{$category->name}}</option>
                     @endforeach
                 </select>
+
+                <div class="mt-1 pl-3 bg-light p-1">
+                    <input type="checkbox" onclick="approveNewCreation();" name="new_category_checkbox" id="new_category_checkbox">
+                    <label for="new_category">Create new: </label>
+                    <input disabled type="text" name="new_category" id="new_category" class="inline">
+                </div>
             </div>
 
             <div class="row form-group">
@@ -64,6 +70,11 @@
             </div>
 
             <div class="form-group">
+                <label class="font-weight-bold" for="img">Image:</label>
+                <input type="file" name="img" id="img" class="form-control-file">
+            </div>
+
+            <div class="form-group">
                 <label class="font-weight-bold" for="description">Description:</label>
                 <textarea id="description"
                           name="description"
@@ -81,3 +92,16 @@
     </div>
 
 @endsection
+
+<script>
+    let approved = false;
+
+    function approveNewCreation() {
+        document.getElementById('new_category').disabled = approved;
+
+        if(approved)
+            document.getElementById('new_category').value = "";
+
+        approved = !approved;
+    }
+</script>
