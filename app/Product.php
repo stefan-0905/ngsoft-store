@@ -45,13 +45,16 @@ class Product extends Model
     /**
      * Accessor for constructing path to image
      *
+     * If image is not null(no image has been set) pull default image
+     * else pull from image field
+     *
      * @return string
      */
     public function getImagePathAttribute() {
-        if(isset($this->image)) {
+        if($this->image != null) {
             return asset("storage/".$this->image);
         } else {
-            return "";
+            return asset('default/default150x150.png');
         }
     }
 

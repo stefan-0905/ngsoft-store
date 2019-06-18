@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price');
             $table->integer('rating')->default(1);
             $table->text('description');
-            $table->string('image')->default('images/default150x150.png');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

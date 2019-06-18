@@ -98,6 +98,8 @@
         {{$products->appends(request()->only(['searchTerm', 'filterRating', 'sort', 'direction']))->links()}}
     </nav>
 
+
+@endsection
     <script>
         function sendRequest() {
             document.getElementById('searchForm').submit();
@@ -105,5 +107,3 @@
 
 
     </script>
-
-@endsection
